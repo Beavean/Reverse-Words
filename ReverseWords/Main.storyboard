@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reverse Words-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Reverse Words" id="BYZ-38-t0r" customClass="ViewController" customModule="FoxmindEd_ReverseWords" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Text to reverse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ti-ND-OG0">
+                                <rect key="frame" x="16" y="290" width="382" height="24.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverse Words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy0-re-Y1O">
+                                <rect key="frame" x="82" y="132" width="250" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krO-rk-Xq1">
+                                <rect key="frame" x="48" y="207" width="318.5" height="43"/>
+                                <string key="text">This application will reverse your words.
+Please type text below</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jc-6A-46v">
+                                <rect key="frame" x="16" y="330.5" width="382" height="2"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="zTi-lu-AFc"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jB7-3k-NHw">
+                                <rect key="frame" x="16" y="762" width="382" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SBj-Mg-mHu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Reverse" cornerStyle="large"/>
+                                <connections>
+                                    <action selector="reverseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HK6-qT-VyT"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-yI-pSL">
+                                <rect key="frame" x="16" y="348.5" width="382" height="42"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9R7-VM-cx1" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Reversed text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkS-t2-wMw">
+                                                <rect key="frame" x="0.0" y="0.0" width="140.5" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <color key="textColor" systemColor="tintColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="JkS-t2-wMw" secondAttribute="trailing" id="1ER-sV-M69"/>
+                                            <constraint firstItem="JkS-t2-wMw" firstAttribute="leading" secondItem="9R7-VM-cx1" secondAttribute="leading" id="cT1-ZG-VZo"/>
+                                            <constraint firstAttribute="width" secondItem="JkS-t2-wMw" secondAttribute="width" id="dOv-EA-2HU"/>
+                                            <constraint firstAttribute="height" secondItem="JkS-t2-wMw" secondAttribute="height" id="qVX-a2-J6j"/>
+                                            <constraint firstAttribute="bottom" secondItem="JkS-t2-wMw" secondAttribute="bottom" id="rfB-iD-AwB"/>
+                                            <constraint firstItem="JkS-t2-wMw" firstAttribute="top" secondItem="9R7-VM-cx1" secondAttribute="top" id="wId-1D-uvN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9R7-VM-cx1" firstAttribute="leading" secondItem="t8w-s6-8IB" secondAttribute="leading" id="30i-mN-Bvv"/>
+                                    <constraint firstItem="9R7-VM-cx1" firstAttribute="top" secondItem="t8w-s6-8IB" secondAttribute="top" id="GnD-64-u9q"/>
+                                    <constraint firstItem="9R7-VM-cx1" firstAttribute="trailing" secondItem="t8w-s6-8IB" secondAttribute="trailing" id="KkE-wu-5DO"/>
+                                    <constraint firstItem="9R7-VM-cx1" firstAttribute="bottom" secondItem="t8w-s6-8IB" secondAttribute="bottom" id="LYQ-OM-S73"/>
+                                    <constraint firstItem="9R7-VM-cx1" firstAttribute="width" secondItem="t8w-s6-8IB" secondAttribute="width" id="VEM-7d-lft"/>
+                                    <constraint firstItem="9R7-VM-cx1" firstAttribute="height" secondItem="t8w-s6-8IB" secondAttribute="height" id="WeF-MV-fUz"/>
+                                    <constraint firstAttribute="height" constant="42" id="XZM-em-0dG"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="t8w-s6-8IB"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="QcB-4u-y2T"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9zq-yI-pSL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1Ue-m3-4fD"/>
+                            <constraint firstItem="7jc-6A-46v" firstAttribute="top" secondItem="6Ti-ND-OG0" secondAttribute="bottom" constant="16" id="1h1-wM-05u"/>
+                            <constraint firstItem="6Ti-ND-OG0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Mx-TE-Nvg"/>
+                            <constraint firstItem="Hy0-re-Y1O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Yf-1z-PqH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9zq-yI-pSL" secondAttribute="trailing" constant="16" id="37I-Oz-eWB"/>
+                            <constraint firstItem="9zq-yI-pSL" firstAttribute="top" secondItem="7jc-6A-46v" secondAttribute="bottom" constant="16" id="Br3-v2-jzg"/>
+                            <constraint firstItem="krO-rk-Xq1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GLP-Qg-zai"/>
+                            <constraint firstItem="7jc-6A-46v" firstAttribute="width" secondItem="6Ti-ND-OG0" secondAttribute="width" id="GPp-LS-3uE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6Ti-ND-OG0" secondAttribute="trailing" id="IPv-Lb-r06"/>
+                            <constraint firstItem="krO-rk-Xq1" firstAttribute="top" secondItem="Hy0-re-Y1O" secondAttribute="bottom" constant="32" id="Ohb-Jt-ylZ"/>
+                            <constraint firstItem="6Ti-ND-OG0" firstAttribute="top" secondItem="krO-rk-Xq1" secondAttribute="bottom" constant="40" id="TyD-qv-XZh"/>
+                            <constraint firstItem="jB7-3k-NHw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQu-I7-s6n"/>
+                            <constraint firstItem="6Ti-ND-OG0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YQQ-tt-OPb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jB7-3k-NHw" secondAttribute="trailing" id="bUX-iU-p67"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jB7-3k-NHw" secondAttribute="bottom" constant="40" id="djx-zY-cqp"/>
+                            <constraint firstItem="jB7-3k-NHw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="l1e-t2-RLm"/>
+                            <constraint firstItem="Hy0-re-Y1O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="tS8-sV-cNI"/>
+                            <constraint firstItem="7jc-6A-46v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zCn-K2-U6B"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="enteredStringTextField" destination="6Ti-ND-OG0" id="oag-Su-dco"/>
+                        <outlet property="resultLabel" destination="JkS-t2-wMw" id="gLY-ax-4tb"/>
+                        <outlet property="reverseButton" destination="jB7-3k-NHw" id="Ml4-Zo-KZz"/>
+                        <outlet property="reverseButtonBottomConstraint" destination="djx-zY-cqp" id="lY4-4b-LWM"/>
+                        <outlet property="textLabelBottomLineView" destination="7jc-6A-46v" id="Vwa-YB-z6O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="123.88392857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
