@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+final class ViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Outlets
     
@@ -16,7 +16,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var reverseButton: UIButton!
     @IBOutlet weak var textLabelBottomLineView: UIView!
     @IBOutlet weak var reverseButtonBottomConstraint: NSLayoutConstraint!
-
+    
+    //MARK: - Properties
+    
+    var processedString: String?
+    let reverseButtonConstraintConstant: CGFloat = 40
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -25,34 +30,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setupKeyboardHiding()
     }
     
-    //MARK: - IBActions
-    
-    @IBAction func reverseButtonPressed(_ sender: UIButton) {
-        reverseEnteredString()
-    }
-    
-    //MARK: - Helpers
-    
-    private func reverseEnteredString() {
-        if let text = resultLabel.text, !text.isEmpty {
-            enteredStringTextField.text = ""
-            resultLabel.text = ""
-            reverseButton.setTitle("Reverse", for: .normal)
-            textFieldDidChange(enteredStringTextField)
-        } else {
-            guard let enteredString = enteredStringTextField.text, !enteredString.isEmpty else { return }
-            let parts = enteredString.components(separatedBy: " ")
-            let reversed = parts.enumerated().map { String($1.reversed()) }
-            resultLabel.text = reversed.joined(separator: " ")
-            reverseButton.setTitle("Clear",for: .normal)
-        }
-    }
-    
-    //MARK: - Setup
+    //MARK: - Private methods
     
     private func configure() {
-        enteredStringTextField.delegate = self
-        enteredStringTextField.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: .editingChanged)
+        enteredStringTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         reverseButton.isUserInteractionEnabled = false
         resultLabel.text = ""
     }
@@ -60,11 +41,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func setupKeyboardHiding() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    //MARK: - Selectors
+    private func processEnteredString() {
+        guard let enteredString = enteredStringTextField.text, !enteredString.isEmpty else { return }
+        if enteredString == processedString {
+            clearInput()
+        } else {
+            processedString = enteredStringTextField.text
+            resultLabel.text = reverseEnteredString(enteredString)
+        }
+        textFieldDidChange()
+    }
+    
+    private func reverseEnteredString(_ string: String) -> String {
+        let parts = string.components(separatedBy: " ")
+        let reversed = parts.enumerated().map { String($1.reversed()) }
+        return reversed.joined(separator: " ")
+    }
+    
+    private func clearInput() {
+        enteredStringTextField.text = ""
+        resultLabel.text = ""
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func reverseButtonPressed() {
+        processEnteredString()
+    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -72,32 +79,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow() {
         reverseButtonBottomConstraint.isActive = false
-        reverseButtonBottomConstraint = reverseButton.topAnchor.constraint(equalTo: textLabelBottomLineView.bottomAnchor, constant: 72)
+        reverseButtonBottomConstraint = reverseButton.topAnchor.constraint(equalTo: textLabelBottomLineView.bottomAnchor, constant: reverseButtonConstraintConstant + reverseButton.frame.height)
         reverseButtonBottomConstraint.isActive = true
     }
     
     @objc func keyboardWillHide() {
         reverseButtonBottomConstraint.isActive = false
-        reverseButtonBottomConstraint = reverseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        reverseButtonBottomConstraint = reverseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -reverseButtonConstraintConstant)
         reverseButtonBottomConstraint.isActive = true
+    }
+    
+    @objc func textFieldDidChange() {
+        let textIsEntered = !(enteredStringTextField.text?.isEmpty ?? true)
+        reverseButton.isUserInteractionEnabled = textIsEntered
+        reverseButton.isEnabled = textIsEntered
+        textLabelBottomLineView.backgroundColor = textIsEntered ? .tintColor : .separator
+        let reverseButtonTitle = enteredStringTextField.text == processedString ? "Clear" : "Reverse"
+        reverseButton.setTitle(reverseButtonTitle, for: .normal)
     }
     
     //MARK: - TextField Delegates
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        reverseEnteredString()
+        processEnteredString()
         return true
     }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        let textIsEntered = textField.text != ""
-        reverseButton.isUserInteractionEnabled = textIsEntered
-        reverseButton.isHighlighted = !textIsEntered
-        textLabelBottomLineView.backgroundColor = textIsEntered ? .tintColor : .separator
-    }
 }
-
-
-
-
-
