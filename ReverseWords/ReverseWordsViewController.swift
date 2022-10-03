@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ReverseWordsViewController.swift
 //  ReverseWords
 //
 //  Created by Beavean on 26.09.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController, UITextFieldDelegate {
+final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Outlets
     
@@ -34,7 +34,6 @@ final class ViewController: UIViewController, UITextFieldDelegate {
     
     private func configure() {
         enteredStringTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        reverseButton.isUserInteractionEnabled = false
         resultLabel.text = ""
     }
     
@@ -51,12 +50,12 @@ final class ViewController: UIViewController, UITextFieldDelegate {
             clearInput()
         } else {
             processedString = enteredStringTextField.text
-            resultLabel.text = reverseEnteredString(enteredString)
+            resultLabel.text = reversedString(enteredString)
         }
         textFieldDidChange()
     }
     
-    private func reverseEnteredString(_ string: String) -> String {
+    private func reversedString(_ string: String) -> String {
         let parts = string.components(separatedBy: " ")
         let reversed = parts.enumerated().map { String($1.reversed()) }
         return reversed.joined(separator: " ")
@@ -73,25 +72,28 @@ final class ViewController: UIViewController, UITextFieldDelegate {
         processEnteredString()
     }
     
-    @objc func dismissKeyboard() {
+    @objc
+    private func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    @objc func keyboardWillShow() {
+    @objc
+    private func keyboardWillShow() {
         reverseButtonBottomConstraint.isActive = false
         reverseButtonBottomConstraint = reverseButton.topAnchor.constraint(equalTo: textLabelBottomLineView.bottomAnchor, constant: reverseButtonConstraintConstant + reverseButton.frame.height)
         reverseButtonBottomConstraint.isActive = true
     }
     
-    @objc func keyboardWillHide() {
+    @objc
+    private func keyboardWillHide() {
         reverseButtonBottomConstraint.isActive = false
         reverseButtonBottomConstraint = reverseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -reverseButtonConstraintConstant)
         reverseButtonBottomConstraint.isActive = true
     }
     
-    @objc func textFieldDidChange() {
-        let textIsEntered = !(enteredStringTextField.text?.isEmpty ?? true)
-        reverseButton.isUserInteractionEnabled = textIsEntered
+    @objc
+    private func textFieldDidChange() {
+        let textIsEntered = enteredStringTextField.text?.isEmpty == false
         reverseButton.isEnabled = textIsEntered
         textLabelBottomLineView.backgroundColor = textIsEntered ? .tintColor : .separator
         let reverseButtonTitle = enteredStringTextField.text == processedString ? "Clear" : "Reverse"
@@ -105,3 +107,4 @@ final class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 }
+
