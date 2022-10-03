@@ -57,7 +57,7 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
     
     private func reversedString(_ string: String) -> String {
         let parts = string.components(separatedBy: " ")
-        let reversed = parts.enumerated().map { String($1.reversed()) }
+        let reversed = parts.map { String($0.reversed()) }
         return reversed.joined(separator: " ")
     }
     
