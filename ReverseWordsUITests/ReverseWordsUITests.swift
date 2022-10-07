@@ -8,41 +8,33 @@
 import XCTest
 
 final class ReverseWordsUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    
+    private var app: XCUIApplication!
+    private lazy var textToReverseTextField = app.textFields["Text to reverse"]
+    private lazy var reverseButton = app.buttons["Reverse"]
+    
+    override func setUp() {
+        super.setUp()
         continueAfterFailure = false
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
     }
-
-    func testInterfaceElements() throws {
-        let app = XCUIApplication()
-        let textToReverseTextField = app.textFields["Text to reverse"]
-        let reverseButton = app.buttons["Reverse"]
+    
+    override func tearDown() {
+        app = nil
+        super.tearDown()
+    }
+    
+    func testInterfaceElements() {
         XCTAssertTrue(textToReverseTextField.exists)
         XCTAssertTrue(reverseButton.exists)
     }
     
-    func testTextEntering() throws {
-        let app = XCUIApplication()
-        var textToReverseTextField = app.textFields["Text to reverse"]
-        textToReverseTextField.tap()
-        textToReverseTextField.typeText("test")
-        textToReverseTextField = app.textFields["test"]
-        XCTAssertTrue(textToReverseTextField.exists)
-    }
-    
-    func testIfButtonIsDisabledUponLoad() throws {
-        let app = XCUIApplication()
-        let reverseButton = app.buttons["Reverse"]
+    func testIfButtonIsDisabledUponLoad() {
         XCTAssertFalse(reverseButton.isEnabled)
     }
     
-    func testResultLabelAppearance() throws {
-        let app = XCUIApplication()
-        let textToReverseTextField = app.textFields["Text to reverse"]
-        let reverseButton = app.buttons["Reverse"]
+    func testResultLabelAppearance() {
         textToReverseTextField.tap()
         textToReverseTextField.typeText("Test string")
         reverseButton.tap()
@@ -50,25 +42,19 @@ final class ReverseWordsUITests: XCTestCase {
         XCTAssertTrue(resultLabel.exists)
     }
     
-    func testButtonTapAndClear() throws {
-        let app = XCUIApplication()
-        var reverseButton = app.buttons["Reverse"]
-        let textToReverseTextField = app.textFields["Text to reverse"]
+    func testButtonTapAndClear() {
         textToReverseTextField.tap()
         textToReverseTextField.typeText("test")
         reverseButton.tap()
         reverseButton = app.buttons["Clear"]
-        let resultLabel = app.staticTexts["tset"]
+        let resultLabel = app.otherElements["resultLabel"]
         reverseButton.tap()
         reverseButton = app.buttons["Reverse"]
         XCTAssertFalse(reverseButton.isEnabled)
         XCTAssertFalse(resultLabel.exists)
     }
     
-    func testButtonSwitchToClearAndReverseTitle() throws {
-        let app = XCUIApplication()
-        var reverseButton = app.buttons["Reverse"]
-        let textToReverseTextField = app.textFields["Text to reverse"]
+    func testButtonSwitchToClearAndReverseTitle() {
         textToReverseTextField.tap()
         textToReverseTextField.typeText("test")
         reverseButton.tap()

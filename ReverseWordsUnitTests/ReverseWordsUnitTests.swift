@@ -10,30 +10,31 @@ import XCTest
 
 final class ReverseWordsUnitTests: XCTestCase {
     
-    private var sut: ReverseWordsViewController!
+    private var sut: ReverseWordsViewModel!
     
     override func setUp() {
         super.setUp()
-        sut = ReverseWordsViewController()
+        sut = ReverseWordsViewModel()
     }
     
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
     
-    func test_reverseMethod_reverseString() throws {
+    func test_reverseMethod_reverseStringWithLetters() {
         XCTAssertEqual(sut.reversedString("Test string"), "tseT gnirts")
     }
     
-    func test_reverseMethod_reverseStringWithNumbers() throws {
+    func test_reverseMethod_reverseStringWithNumbers() {
         XCTAssertEqual(sut.reversedString("12 34 56 78 90"), "21 43 65 87 09")
     }
     
-    func test_reverseMethod_reverseStringWithSymbols() throws {
+    func test_reverseMethod_reverseStringWithSymbols() {
         XCTAssertEqual(sut.reversedString("@:?!() $#,./"), ")(!?:@ /.,#$")
     }
     
-    func test_ReverseMethod_reverseStringWithEmojis() throws {
+    func test_ReverseMethod_reverseStringWithEmojis() {
         XCTAssertEqual(sut.reversedString("😵‍💫🤪 💥💣 💀👻"), "🤪😵‍💫 💣💥 👻💀")
     }
 }
