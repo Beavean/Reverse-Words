@@ -10,8 +10,8 @@ import XCTest
 final class ReverseWordsUITests: XCTestCase {
     
     private var app: XCUIApplication!
-    private lazy var textToReverseTextField = app.textFields["Text to reverse"]
-    private lazy var reverseButton = app.buttons["Reverse"]
+    private lazy var textToReverseTextField = app.textFields["reverseTextField"]
+    private lazy var reverseButton = app.buttons["reverseButton"]
     
     override func setUp() {
         super.setUp()
