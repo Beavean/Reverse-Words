@@ -19,8 +19,9 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
-    var processedString: String?
-    let reverseButtonConstraintConstant: CGFloat = 40
+    private var processedString: String?
+    private let reverseButtonConstraintConstant: CGFloat = 40
+    private let viewModel = ReverseWordsViewModel()
     
     //MARK: - Lifecycle
     
@@ -50,15 +51,9 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
             clearInput()
         } else {
             processedString = enteredStringTextField.text
-            resultLabel.text = reversedString(enteredString)
+            resultLabel.text = viewModel.reversedString(enteredString)
         }
         textFieldDidChange()
-    }
-    
-    internal func reversedString(_ string: String) -> String {
-        let parts = string.components(separatedBy: " ")
-        let reversed = parts.map { String($0.reversed()) }
-        return reversed.joined(separator: " ")
     }
     
     private func clearInput() {
