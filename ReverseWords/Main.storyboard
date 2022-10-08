@@ -19,6 +19,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Text to reverse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ti-ND-OG0">
                                 <rect key="frame" x="16" y="290" width="382" height="24.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="reverseTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -48,6 +49,7 @@ Please type text below</string>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jB7-3k-NHw">
                                 <rect key="frame" x="16" y="762" width="382" height="60"/>
+                                <accessibility key="accessibilityConfiguration" identifier="reverseButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="SBj-Mg-mHu"/>
                                 </constraints>
@@ -65,6 +67,7 @@ Please type text below</string>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Reversed text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkS-t2-wMw">
                                                 <rect key="frame" x="0.0" y="0.0" width="140.5" height="29"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="resultLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" systemColor="tintColor"/>
                                                 <nil key="highlightedColor"/>
