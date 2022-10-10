@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReverseWordsViewModel {
+class ReverseWordsViewModel {
     
     private let defaultAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
