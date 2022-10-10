@@ -22,19 +22,31 @@ final class ReverseWordsUnitTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_reverseMethod_reverseStringWithLetters() {
-        XCTAssertEqual(sut.reversedString("Test string"), "tseT gnirts")
+    //MARK: - Default character exclusion
+    
+    func test_reverseMethod_defaultFilter_firstStringFromTask() {
+        XCTAssertEqual(sut.reverseInput(string: "Foxminded cool 24/7", defaultFilter: true), "dednimxoF looc 24/7")
     }
     
-    func test_reverseMethod_reverseStringWithNumbers() {
-        XCTAssertEqual(sut.reversedString("12 34 56 78 90"), "21 43 65 87 09")
+    func test_reverseMethod_defaultFilter_secondStringFromTask() {
+        XCTAssertEqual(sut.reverseInput(string: "abcd efgh", defaultFilter: true), "dcba hgfe")
     }
     
-    func test_reverseMethod_reverseStringWithSymbols() {
-        XCTAssertEqual(sut.reversedString("@:?!() $#,./"), ")(!?:@ /.,#$")
+    func test_reverseMethod_defaultFilter_thirdStringFromTask() {
+        XCTAssertEqual(sut.reverseInput(string: "a1bcd efg!h", defaultFilter: true), "d1cba hgf!e")
     }
     
-    func test_ReverseMethod_reverseStringWithEmojis() {
-        XCTAssertEqual(sut.reversedString("😵‍💫🤪 💥💣 💀👻"), "🤪😵‍💫 💣💥 👻💀")
+    //MARK: - Custom character exclusion
+    
+    func test_reverseMethod_customFilter_firstStringFromTask() {
+        XCTAssertEqual(sut.reverseInput(string: "Foxminded cool 24/7", defaultFilter: false, customFilter: "xl"), "dexdnimoF oocl 7/42")
+    }
+    
+    func test_reverseMethod_customFilter_secondStringFromTask() {
+        XCTAssertEqual(sut.reverseInput(string: "abcd efgh", defaultFilter: false, customFilter: "xl"), "dcba hgfe")
+    }
+    
+    func test_reverseMethod_customFilter_thirdStringFromTask() {
+        XCTAssertEqual(sut.reverseInput(string: "a1bcd efglh", defaultFilter: false, customFilter: "xl"), "dcb1a hgfle")
     }
 }
