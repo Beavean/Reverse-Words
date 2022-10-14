@@ -38,7 +38,7 @@ final class ReverseWordsUITests: XCTestCase {
         XCTAssertTrue(defaultInformationLabel.exists)
     }
     
-    func text_customFilterTextFieldAppearance () {
+    func test_customFilterTextFieldAppearance() {
         customSegmentedControlButton.tap()
         XCTAssertTrue(customFilterTextField.exists)
         XCTAssertFalse(defaultInformationLabel.exists)

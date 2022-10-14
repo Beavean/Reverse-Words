@@ -25,6 +25,10 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
     private var filteredText: String?
     private let viewModel = ReverseWordsViewModel()
     
+    private var changeButtonToClear: Bool {
+        enteredStringTextField.text == processedString && customFilterTextField.text == filteredText
+    }
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -53,9 +57,11 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
         } else {
             switch filterSegmentedControl.selectedSegmentIndex {
             case 1:
-                resultLabel.text = viewModel.reverseInput(string: enteredString, defaultFilter: false, customFilter: customFilterTextField.text)
+                resultLabel.text = viewModel.reverseInputUsingCustomFilter(string: enteredString, filter: customFilterTextField.text)
+            case 0:
+                resultLabel.text = viewModel.reverseInputUsingDefaultFilter(string: enteredString)
             default:
-                resultLabel.text = viewModel.reverseInput(string: enteredString, defaultFilter: true)
+                break
             }
             processedString = enteredStringTextField.text
             filteredText = customFilterTextField.text
@@ -77,9 +83,11 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
         case 1:
             customFilterTextField.isHidden = false
             defaultInformationLabel.isHidden = true
-        default:
+        case 0:
             customFilterTextField.isHidden = true
             defaultInformationLabel.isHidden = false
+        default:
+            break
         }
         processedString = ""
         reverseButton.setTitle("Reverse", for: .normal)
@@ -99,7 +107,7 @@ final class ReverseWordsViewController: UIViewController, UITextFieldDelegate {
         let textIsEntered = enteredStringTextField.text?.isEmpty == false
         reverseButton.isEnabled = textIsEntered
         textLabelBottomLineView.backgroundColor = textIsEntered ? .tintColor : .separator
-        let reverseButtonTitle = enteredStringTextField.text == processedString && customFilterTextField.text == filteredText ? "Clear" : "Reverse"
+        let reverseButtonTitle = changeButtonToClear ? "Clear" : "Reverse"
         reverseButton.setTitle(reverseButtonTitle, for: .normal)
     }
     
