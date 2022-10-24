@@ -11,9 +11,9 @@ final class ReverseWordsViewModel {
     
     //MARK: - Properties
     
-    private static let defaultAllowedCharacters: [CharacterSet] = [.decimalDigits, .symbols, .punctuationCharacters, .nonBaseCharacters]
+    private static let defaultFilterCharacterSets: [CharacterSet] = [.decimalDigits, .symbols, .punctuationCharacters, .nonBaseCharacters]
     private static var defaultFilterString: String {
-        defaultAllowedCharacters.map { $0.createStringWithAllCharacters() }.joined()
+        defaultFilterCharacterSets.map { $0.createStringWithAllCharacters() }.joined()
     }
     
     //MARK: - ViewModel Handlers
