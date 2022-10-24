@@ -19,7 +19,7 @@ final class ReverseWordsViewModel {
         var reversedWords = [String]()
         let words = string.components(separatedBy: " ")
         for word in words {
-            let reversedArrayOfCharacters = createReversedArrayOfCharactersUsingDefaultFilterFrom(inputWord: word)
+            let reversedArrayOfCharacters = reversedArrayOfCharactersUsingDefaultFilterFrom(from: word)
             let joinedWord = reversedArrayOfCharacters.map { String($0) }
             let newJoinedWord = joinedWord.joined()
             reversedWords.append(newJoinedWord)
@@ -31,7 +31,7 @@ final class ReverseWordsViewModel {
         var reversedWords = [String]()
         let words = string.components(separatedBy: " ")
         for word in words {
-            let reversedArrayOfCharacters = createReversedArrayOfCharactersFrom(inputWord: word, usingFilter: filter)
+            let reversedArrayOfCharacters = reversedArrayOfCharacters(from: word, filter: filter)
             let joinedWord = reversedArrayOfCharacters.map { String($0) }
             let newJoinedWord = joinedWord.joined()
             reversedWords.append(newJoinedWord)
@@ -42,12 +42,12 @@ final class ReverseWordsViewModel {
     //MARK: - Helpers
     
     private func checkIfCharacterIsAllowedByDefault(_ character: Character) -> Bool {
-        let characterAsString = String(character)
+        let characterAsString = "\(character)"
         return characterAsString.range(of: defaultAllowedCharacters, options: .regularExpression) != nil
     }
     
-    private func createReversedArrayOfCharactersFrom(inputWord: String, usingFilter filter: String?) -> [Character] {
-        let characters = Array(inputWord)
+    private func reversedArrayOfCharacters(from word: String, filter: String?) -> [Character] {
+        let characters = Array(word)
         var notInFilterCharacters = [Character]()
         var filteredCharacters = [Int: Character]()
         for (index, character) in characters.enumerated() {
@@ -58,7 +58,7 @@ final class ReverseWordsViewModel {
             }
         }
         var reversedArrayOfCharacters = Array(notInFilterCharacters.reversed())
-        for index in 0...inputWord.count {
+        for index in 0...word.count {
             if let filteredCharacter = filteredCharacters[index] {
                 reversedArrayOfCharacters.insert(filteredCharacter, at: index)
             }
@@ -66,8 +66,8 @@ final class ReverseWordsViewModel {
         return reversedArrayOfCharacters
     }
     
-    private func createReversedArrayOfCharactersUsingDefaultFilterFrom(inputWord: String) -> [Character] {
-        let characters = Array(inputWord)
+    private func reversedArrayOfCharactersUsingDefaultFilterFrom(from word: String) -> [Character] {
+        let characters = Array(word)
         var notInFilterCharacters = [Character]()
         var filteredCharacters = [Int: Character]()
         for (index, character) in characters.enumerated() {
@@ -78,7 +78,7 @@ final class ReverseWordsViewModel {
             }
         }
         var reversedArrayOfCharacters = Array(notInFilterCharacters.reversed())
-        for index in 0...inputWord.count {
+        for index in 0...word.count {
             if let filteredCharacter = filteredCharacters[index] {
                 reversedArrayOfCharacters.insert(filteredCharacter, at: index)
             }
