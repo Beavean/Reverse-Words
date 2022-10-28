@@ -47,18 +47,6 @@ Please type text below</string>
                                     <constraint firstAttribute="height" constant="2" id="5Xb-dw-RGd"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jB7-3k-NHw">
-                                <rect key="frame" x="16" y="423.5" width="382" height="40"/>
-                                <accessibility key="accessibilityConfiguration" identifier="reverseButton"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SBj-Mg-mHu"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Reverse" cornerStyle="large"/>
-                                <connections>
-                                    <action selector="reverseButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="iIv-Ej-Xtn"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-yI-pSL">
                                 <rect key="frame" x="16" y="373.5" width="382" height="42"/>
                                 <subviews>
@@ -126,7 +114,6 @@ Please type text below</string>
                             <constraint firstItem="6Ti-ND-OG0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Mx-TE-Nvg"/>
                             <constraint firstItem="Hy0-re-Y1O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Yf-1z-PqH"/>
                             <constraint firstItem="RwL-it-5Ti" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="3cy-5g-KOw"/>
-                            <constraint firstItem="jB7-3k-NHw" firstAttribute="top" secondItem="9zq-yI-pSL" secondAttribute="bottom" constant="8" id="5Zp-6h-6zZ"/>
                             <constraint firstItem="krO-rk-Xq1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GLP-Qg-zai"/>
                             <constraint firstItem="7jc-6A-46v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="HEl-4Z-ddp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Ti-ND-OG0" secondAttribute="trailing" constant="16" id="IPv-Lb-r06"/>
@@ -139,13 +126,10 @@ Please type text below</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RwL-it-5Ti" secondAttribute="trailing" constant="16" id="Qq8-Fv-so6"/>
                             <constraint firstItem="9zq-yI-pSL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="TXf-WM-C7K"/>
                             <constraint firstItem="6Ti-ND-OG0" firstAttribute="top" secondItem="krO-rk-Xq1" secondAttribute="bottom" constant="24" id="TyD-qv-XZh"/>
-                            <constraint firstItem="jB7-3k-NHw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQu-I7-s6n"/>
                             <constraint firstItem="6Ti-ND-OG0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YQQ-tt-OPb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jB7-3k-NHw" secondAttribute="trailing" id="bUX-iU-p67"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V4R-FF-UX4" secondAttribute="trailing" constant="16" id="dLv-Ji-Gd1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iwo-Ww-dqU" secondAttribute="trailing" constant="16" id="evd-9a-Smb"/>
                             <constraint firstItem="V4R-FF-UX4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fcH-Gj-hdS"/>
-                            <constraint firstItem="jB7-3k-NHw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="l1e-t2-RLm"/>
                             <constraint firstItem="V4R-FF-UX4" firstAttribute="top" secondItem="7jc-6A-46v" secondAttribute="bottom" constant="8" id="lsp-fo-6Ze"/>
                             <constraint firstItem="iwo-Ww-dqU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lts-YT-9kY"/>
                             <constraint firstItem="7jc-6A-46v" firstAttribute="top" secondItem="6Ti-ND-OG0" secondAttribute="bottom" constant="8" id="s2H-9y-FSC"/>
@@ -159,7 +143,6 @@ Please type text below</string>
                         <outlet property="enteredStringTextField" destination="6Ti-ND-OG0" id="oag-Su-dco"/>
                         <outlet property="filterSegmentedControl" destination="V4R-FF-UX4" id="yc7-ax-hbL"/>
                         <outlet property="resultLabel" destination="JkS-t2-wMw" id="gLY-ax-4tb"/>
-                        <outlet property="reverseButton" destination="jB7-3k-NHw" id="Ml4-Zo-KZz"/>
                         <outlet property="textLabelBottomLineView" destination="7jc-6A-46v" id="Vwa-YB-z6O"/>
                     </connections>
                 </viewController>
